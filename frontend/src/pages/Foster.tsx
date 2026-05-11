@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { motion } from 'framer-motion'
 import { toast } from 'sonner'
-import { Heart, Home, Shield, ArrowRight, CheckCircle2, Mail } from 'lucide-react'
+import { Heart, ArrowRight, CheckCircle2, Mail } from 'lucide-react'
 import PageHero from '@/components/ui/PageHero'
 import { fosterSchema, type FosterFormData } from '@/lib/schemas'
 import api from '@/lib/api'
@@ -66,20 +66,12 @@ export default function Foster() {
                 <Mail className="h-4 w-4" /> Questions? Email Ida@MistyEyes.org
               </a>
             </motion.div>
-            <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-              <div className="grid grid-cols-2 gap-4">
-                {[
-                  { icon: Home, label: 'Home-Based Care', desc: 'Pets stay in your home, not a kennel' },
-                  { icon: Shield, label: 'Fully Supported', desc: 'All supplies and vet care provided' },
-                  { icon: Heart, label: 'Save Lives', desc: 'Each foster home saves multiple pets' },
-                  { icon: CheckCircle2, label: 'Flexible Terms', desc: 'Short or long-term — your choice' },
-                ].map(item => (
-                  <div key={item.label} className="bg-teal-50 rounded-2xl p-5 border border-teal-100">
-                    <item.icon className="h-6 w-6 text-primary mb-3" />
-                    <p className="font-semibold text-sm mb-1">{item.label}</p>
-                    <p className="text-xs text-muted-foreground">{item.desc}</p>
-                  </div>
-                ))}
+            <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="space-y-4">
+              <div className="rounded-2xl overflow-hidden shadow-md">
+                <img src="/images/0041_33f8b8_acc0d744430a4bc092312ee32788564e_mv2.png" alt="Foster a pet with Misty Eyes" className="w-full h-auto object-cover" />
+              </div>
+              <div className="rounded-2xl overflow-hidden shadow-md">
+                <img src="/images/0042_33f8b8_fc3565331f2b4a92b0f00be1eb55425d_mv2.png" alt="Misty Eyes foster program" className="w-full h-auto object-cover" />
               </div>
             </motion.div>
           </div>

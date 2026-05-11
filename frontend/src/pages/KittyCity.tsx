@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { MapPin, Clock, Heart, Cat, ArrowRight } from 'lucide-react'
+import { MapPin, Clock, ArrowRight } from 'lucide-react'
 import PageHero from '@/components/ui/PageHero'
 
 export default function KittyCity() {
@@ -34,20 +34,17 @@ export default function KittyCity() {
               </div>
             </motion.div>
             <motion.div initial={{ opacity: 0, x: 16 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-              <div className="rounded-2xl overflow-hidden shadow-lg mb-4">
-                <img src="/images/0005_2025_20KC_20Graphic.jpg" alt="Kitty City 2025" className="w-full h-auto object-cover" />
-              </div>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-3 gap-3">
                 {[
-                  { icon: Cat, label: 'Free-Roam Space', desc: 'Cats can be themselves' },
-                  { icon: Heart, label: 'All Vet-Ready', desc: 'Spayed, vaccinated, chipped' },
-                  { icon: Clock, label: 'Open Weekends', desc: 'Walk-ins welcome' },
-                  { icon: MapPin, label: 'On-Site', desc: 'At the Adoption Center' },
-                ].map(item => (
-                  <div key={item.label} className="bg-amber-50 rounded-2xl border border-amber-100 p-5">
-                    <item.icon className="h-6 w-6 text-amber-600 mb-3" />
-                    <p className="font-semibold text-sm mb-1">{item.label}</p>
-                    <p className="text-xs text-muted-foreground">{item.desc}</p>
+                  '/images/0110_0be29d_b904368f45ac4e70abe4560c8eb0075a_mv2.jpg',
+                  '/images/0111_0be29d_250172e6874b4361b1311c5a7b30851c_mv2.png',
+                  '/images/0112_0be29d_87c253a47ed44bcd903f60020f174c43_mv2.jpg',
+                  '/images/0113_0be29d_55999881e92b44e897d7a61fbfb55d23_mv2.jpg',
+                  '/images/0114_0be29d_c786d0b5e60c45c8a7f56d4b90c47de4_mv2.jpg',
+                  '/images/0115_0be29d_f7b5608158cc41e1aa8d71286021df97_mv2.jpg',
+                ].map((src, i) => (
+                  <div key={i} className="rounded-xl overflow-hidden aspect-video">
+                    <img src={src} alt={`Kitty City suite ${i + 1}`} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
                   </div>
                 ))}
               </div>

@@ -68,6 +68,23 @@ export default function AboutUs() {
         </div>
       </section>
 
+      <section className="py-12 bg-white">
+        <div className="container">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              { src: '/images/0061_102-IMG_9474.jpg', alt: 'Misty Eyes volunteers' },
+              { src: '/images/0062_424810_410873608980755_1219081742_n.jpg', alt: 'Misty Eyes community' },
+              { src: '/images/0063_Collecting_20Donations.jpg', alt: 'Collecting Donations' },
+              { src: '/images/0064_Cat_20and_20Dog.jpg', alt: 'Cat and Dog' },
+            ].map((photo, i) => (
+              <motion.div key={photo.src} variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} custom={i} className="rounded-2xl overflow-hidden aspect-square">
+                <img src={photo.src} alt={photo.alt} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="py-16 bg-secondary/50">
         <div className="container">
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">

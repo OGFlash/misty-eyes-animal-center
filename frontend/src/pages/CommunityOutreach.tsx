@@ -9,6 +9,10 @@ export default function CommunityOutreach() {
 
       <section className="py-20 bg-white">
         <div className="container max-w-4xl">
+          <div className="rounded-2xl overflow-hidden shadow mb-12 max-h-80">
+            <img src="/images/0051_Community_20Outreach_202_edited.jpg" alt="Community Outreach" className="w-full h-full object-cover" />
+          </div>
+
           <div className="grid md:grid-cols-3 gap-8 mb-16">
             {[
               { icon: Users, title: 'Community Partnerships', desc: 'We work with local nonprofits, schools, businesses, and community organizations to expand our reach and create more opportunities to help animals and people.' },

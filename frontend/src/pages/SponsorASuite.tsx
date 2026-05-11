@@ -13,6 +13,10 @@ export default function SponsorASuite() {
     <div>
       <PageHero badge="Legacy Giving" title="Sponsor a Suite" subtitle="Honor a pet or person you love by sponsoring a suite or kennel space at the Misty Eyes Adoption Center." />
 
+      <div className="w-full h-72 overflow-hidden">
+        <img src="/images/0145_CatSuiteSponsorship.jpg" alt="Cat Suite Sponsorship" className="w-full h-full object-cover object-center" />
+      </div>
+
       <section className="py-20 bg-white">
         <div className="container max-w-4xl">
           <div className="space-y-5 mb-12">

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { MapPin, Phone, Clock, Facebook, Instagram, Heart, PawPrint } from 'lucide-react'
+import { MapPin, Phone, Clock, Facebook, Instagram, Heart } from 'lucide-react'
 
 const HOURS = [
   { day: 'Monday',    ac: 'Closed',           kc: 'Closed' },
@@ -33,8 +33,11 @@ export default function Footer() {
         {/* Brand */}
         <div className="flex flex-col gap-4">
           <Link to="/" className="flex items-center gap-2">
-            <PawPrint className="h-7 w-7 text-teal-300" />
-            <span className="font-heading font-bold text-lg text-white">Misty Eyes Animal Center</span>
+            <img
+              src="/images/0001_mistylogotransparent.png"
+              alt="Misty Eyes Animal Center"
+              className="h-12 w-auto brightness-0 invert"
+            />
           </Link>
           <p className="text-sm text-teal-200 leading-relaxed">
             A nonprofit animal rescue organization dedicated to giving every animal a second chance at a loving home.

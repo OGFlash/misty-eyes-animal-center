@@ -8,7 +8,7 @@ const fadeUp = {
 }
 
 const BOARD = [
-  { name: 'Jennifer Luttrell', role: 'President & Founder' },
+  { name: 'Jennifer Luttrell', role: 'President & Founder', photo: '/images/0067_JenniferMcCarty_edited.jpg' },
   { name: 'Allison Buroker', role: 'Vice President' },
   { name: 'Monica Webb', role: 'Secretary' },
   { name: 'Jodi Runde', role: 'Treasurer' },
@@ -17,11 +17,11 @@ const BOARD = [
 ]
 
 const OPS = [
-  { name: 'Angie Jones', role: 'Adoption Counselor', email: 'Adoption@MistyEyes.org' },
-  { name: 'Terry Barker', role: 'Volunteer Coordinator', email: 'Terry@mistyeyes.org' },
-  { name: 'Ida Peterson', role: 'Foster Coordinator', email: 'foster@mistyeyes.org' },
+  { name: 'Angie Jones', role: 'Adoption Counselor', email: 'Adoption@MistyEyes.org', photo: '/images/0068_AngieCoggan_edited_edited.png' },
+  { name: 'Terry Barker', role: 'Volunteer Coordinator', email: 'Terry@mistyeyes.org', photo: '/images/0091_TerryKeeler.jpg' },
+  { name: 'Ida Peterson', role: 'Foster Coordinator', email: 'foster@mistyeyes.org', photo: '/images/0079_IdaSchnabel.jpg' },
   { name: 'JV Kasprowicz', role: 'Programs & Education Director', email: 'JV@MistyEyes.org' },
-  { name: 'Sheryl Davis', role: 'Community Outreach Coordinator', email: 'sheryl@mistyeyes.org' },
+  { name: 'Sheryl Davis', role: 'Community Outreach Coordinator', email: 'sheryl@mistyeyes.org', photo: '/images/0070_SherylFrancik_edited.jpg' },
 ]
 
 const TEAMS = [
@@ -44,9 +44,15 @@ export default function Leadership() {
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
                 {team.members.map((m, i) => (
                   <motion.div key={m.name} variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} custom={i} className="bg-white border rounded-2xl p-6 hover:shadow-md transition-shadow">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-teal-400 to-teal-600 flex items-center justify-center text-white font-bold text-lg mb-4">
-                      {m.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
-                    </div>
+                    {'photo' in m && m.photo ? (
+                      <div className="w-16 h-16 rounded-full overflow-hidden mb-4 ring-2 ring-teal-100">
+                        <img src={(m as {photo:string}).photo} alt={m.name} className="w-full h-full object-cover object-top" />
+                      </div>
+                    ) : (
+                      <div className="w-16 h-16 rounded-full bg-gradient-to-br from-teal-400 to-teal-600 flex items-center justify-center text-white font-bold text-lg mb-4">
+                        {m.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
+                      </div>
+                    )}
                     <p className="font-semibold text-base mb-0.5">{m.name}</p>
                     <p className="text-sm text-muted-foreground mb-3">{m.role}</p>
                     {'email' in m && (

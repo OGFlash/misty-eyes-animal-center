@@ -10,12 +10,12 @@ const fadeUp = {
 }
 
 const DEMO_PETS = [
-  { id: 1, name: 'Luna', species: 'cat', age: 'kitten', gender: 'female', breed: 'Domestic Shorthair', desc: 'Luna is a playful, affectionate kitten who loves cuddles and feather toys. Good with kids.', color: 'bg-amber-100', emoji: '🐱' },
-  { id: 2, name: 'Biscuit', species: 'dog', age: 'adult', gender: 'male', breed: 'Beagle Mix', desc: 'Biscuit is a gentle, loyal beagle mix who loves walks, snuggles, and treat puzzles. House-trained.', color: 'bg-teal-100', emoji: '🐶' },
-  { id: 3, name: 'Mochi', species: 'cat', age: 'adult', gender: 'female', breed: 'Siamese Mix', desc: 'Mochi is a confident, chatty Siamese mix who will follow you everywhere. Best as only pet.', color: 'bg-purple-100', emoji: '🐱' },
-  { id: 4, name: 'Rex', species: 'dog', age: 'senior', gender: 'male', breed: 'Labrador Mix', desc: 'Rex is a calm, loving senior who just wants a warm couch and a gentle family. Low energy.', color: 'bg-rose-100', emoji: '🐶' },
-  { id: 5, name: 'Cleo', species: 'cat', age: 'kitten', gender: 'female', breed: 'Tabby', desc: 'Cleo is a spunky tabby kitten bursting with personality. She loves climbing and wand toys.', color: 'bg-amber-100', emoji: '🐱' },
-  { id: 6, name: 'Beau', species: 'dog', age: 'young', gender: 'male', breed: 'Border Collie Mix', desc: 'Beau is an energetic, smart border collie mix perfect for an active family. Knows basic commands.', color: 'bg-teal-100', emoji: '🐶' },
+  { id: 1, name: 'Luna',    species: 'cat', age: 'kitten', gender: 'female', breed: 'Domestic Shorthair', desc: 'Luna is a playful, affectionate kitten who loves cuddles and feather toys. Good with kids.',              photo: '/images/0083_Grey_20Kitten.jpg' },
+  { id: 2, name: 'Biscuit', species: 'dog', age: 'adult',  gender: 'male',   breed: 'Beagle Mix',         desc: 'Biscuit is a gentle, loyal beagle mix who loves walks, snuggles, and treat puzzles. House-trained.', photo: '/images/0084_Dog_20Portrait.jpg' },
+  { id: 3, name: 'Mochi',   species: 'cat', age: 'adult',  gender: 'female', breed: 'Siamese Mix',        desc: 'Mochi is a confident, chatty Siamese mix who will follow you everywhere. Best as only pet.',          photo: '/images/0085_Cat_20Portrait_edited.png' },
+  { id: 4, name: 'Rex',     species: 'dog', age: 'senior', gender: 'male',   breed: 'Labrador Mix',       desc: 'Rex is a calm, loving senior who just wants a warm couch and a gentle family. Low energy.',          photo: '/images/0078_Dog.jpg' },
+  { id: 5, name: 'Cleo',    species: 'cat', age: 'kitten', gender: 'female', breed: 'Tabby',               desc: 'Cleo is a spunky tabby kitten bursting with personality. She loves climbing and wand toys.',         photo: '/images/0083_Grey_20Kitten.jpg' },
+  { id: 6, name: 'Beau',    species: 'dog', age: 'young',  gender: 'male',   breed: 'Border Collie Mix',  desc: 'Beau is an energetic, smart border collie mix perfect for an active family. Knows basic commands.', photo: '/images/0099_Puppy_20Play.jpg' },
 ]
 
 export default function AdoptablePets() {
@@ -67,7 +67,9 @@ export default function AdoptablePets() {
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {filtered.map((pet, i) => (
                 <motion.div key={pet.id} variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} custom={i} className="group bg-white rounded-2xl border overflow-hidden hover:shadow-lg transition-shadow">
-                  <div className={`h-48 ${pet.color} flex items-center justify-center text-6xl`}>{pet.emoji}</div>
+                  <div className="h-48 overflow-hidden bg-secondary">
+                    <img src={pet.photo} alt={pet.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  </div>
                   <div className="p-5">
                     <div className="flex items-start justify-between mb-1">
                       <h3 className="font-heading font-bold text-xl">{pet.name}</h3>

@@ -52,6 +52,20 @@ export default function Volunteer() {
         </a>
       </PageHero>
 
+      {/* Volunteer photo strip */}
+      <section className="py-14 bg-secondary/40">
+        <div className="container">
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="rounded-2xl overflow-hidden shadow">
+              <img src="/images/0039_ME_20Volunteers.jpg" alt="Misty Eyes volunteers" className="w-full h-64 object-cover" />
+            </div>
+            <div className="rounded-2xl overflow-hidden shadow">
+              <img src="/images/0040_ME_20Volunteer_20Group_edited.jpg" alt="Misty Eyes volunteer group" className="w-full h-64 object-cover" />
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="py-20 bg-white">
         <div className="container">
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">

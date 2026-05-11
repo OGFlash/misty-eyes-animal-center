@@ -133,11 +133,11 @@ export default function Navbar() {
       <div className="container flex h-16 items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 shrink-0" aria-label="Misty Eyes Animal Center — Home">
-          <PawPrint className="h-7 w-7 text-primary" />
-          <span className="font-heading font-bold text-lg text-primary leading-tight hidden sm:block">
-            Misty Eyes<br className="hidden" />
-            <span className="text-xs font-normal text-muted-foreground block leading-none">Animal Center</span>
-          </span>
+          <img
+            src="/images/0001_mistylogotransparent.png"
+            alt="Misty Eyes Animal Center"
+            className="h-10 w-auto"
+          />
         </Link>
 
         {/* Desktop nav */}

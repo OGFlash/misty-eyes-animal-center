@@ -14,6 +14,10 @@ export default function NamingOpportunities() {
     <div>
       <PageHero badge="Legacy Giving" title="Naming Opportunities" subtitle="Leave a permanent legacy at Misty Eyes by naming a room, space, or facility feature in honor of a person or pet you love." />
 
+      <div className="w-full h-72 overflow-hidden">
+        <img src="/images/0146_NamingOpps.jpg" alt="Naming Opportunities" className="w-full h-full object-cover object-center" />
+      </div>
+
       <section className="py-20 bg-white">
         <div className="container max-w-4xl">
           <div className="grid sm:grid-cols-2 gap-6 mb-12">

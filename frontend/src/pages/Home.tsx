@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { ArrowRight, Heart, PawPrint, Users, BookOpen, ChevronRight } from 'lucide-react'
+import { ArrowRight, Heart, PawPrint, BookOpen, ChevronRight } from 'lucide-react'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -33,8 +33,15 @@ export default function Home() {
   return (
     <div>
       {/* Hero */}
-      <section className="relative min-h-[80vh] flex items-center justify-center bg-gradient-to-br from-teal-800 to-teal-600 text-white overflow-hidden">
-        <div className="absolute inset-0 bg-black/20" />
+      <section className="relative min-h-[80vh] flex items-center justify-center text-white overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src="/images/0064_Cat_20and_20Dog.jpg"
+            alt="A cat and dog together at Misty Eyes"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-teal-900/70" />
+        </div>
         <div className="container relative z-10 text-center py-24">
           <motion.p
             variants={fadeUp} initial="hidden" animate="show" custom={0}
@@ -205,13 +212,31 @@ export default function Home() {
                 </Link>
               </div>
             </div>
-            <div className="rounded-2xl bg-teal-50 border border-teal-100 p-8 flex items-center justify-center">
-              <div className="text-center">
-                <Users className="h-16 w-16 text-primary mx-auto mb-4" />
-                <p className="font-heading text-2xl font-bold text-teal-800">Community First</p>
-                <p className="text-teal-600 mt-2">Programs serving schools, youth, and neighborhoods across central Indiana</p>
-              </div>
+            <div className="rounded-2xl overflow-hidden shadow-lg">
+              <img
+                src="/images/0051_Community_20Outreach_202_edited.jpg"
+                alt="Misty Eyes community outreach"
+                className="w-full h-64 object-cover"
+              />
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Sponsors */}
+      <section className="py-12 bg-secondary/40 border-t">
+        <div className="container">
+          <p className="text-center text-xs font-semibold text-muted-foreground uppercase tracking-widest mb-8">Thank You to Our Supporters</p>
+          <div className="flex flex-wrap items-center justify-center gap-10 grayscale opacity-60 hover:opacity-80 transition-opacity">
+            {[
+              { src: '/images/0006_BAC_logo.jpg',               alt: 'BAC Logo' },
+              { src: '/images/0008_barkefellers-logo.png',      alt: 'Barkefellers' },
+              { src: '/images/0011_USA-Roofing-footer-logo.png',alt: 'USA Roofing' },
+              { src: '/images/0014_AndyMohrLogo_FORD_2016.jpg', alt: 'Andy Mohr Ford' },
+              { src: '/images/0020_Kenneth_20Scott_20logo.png', alt: 'Kenneth Scott' },
+            ].map(s => (
+              <img key={s.alt} src={s.src} alt={s.alt} className="h-10 w-auto object-contain" />
+            ))}
           </div>
         </div>
       </section>

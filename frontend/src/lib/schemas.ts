@@ -64,7 +64,17 @@ export const fosterSchema = z.object({
   message: z.string().optional(),
 })
 
+export const fundraiserSchema = z.object({
+  name: z.string().min(2, 'Name required'),
+  email: z.string().email('Valid email required'),
+  phone: z.string().optional(),
+  event_type: z.string().min(2, 'Event type required'),
+  event_date: z.string().optional(),
+  description: z.string().min(10, 'Please describe your event'),
+})
+
 export type ContactFormData = z.infer<typeof contactSchema>
 export type AdoptionApplicationData = z.infer<typeof adoptionApplicationSchema>
 export type VolunteerFormData = z.infer<typeof volunteerSchema>
 export type FosterFormData = z.infer<typeof fosterSchema>
+export type FundraiserFormData = z.infer<typeof fundraiserSchema>

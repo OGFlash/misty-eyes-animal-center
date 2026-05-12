@@ -1,6 +1,7 @@
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
-import { ArrowRight, Heart, PawPrint, BookOpen, ChevronRight } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { ArrowRight, Heart, PawPrint, BookOpen, ChevronRight, X, PlayCircle } from 'lucide-react'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -29,37 +30,112 @@ const STATS = [
   { value: '1,000+', label: 'Happy Adopters' },
 ]
 
+const VIDEO_ID = 'BU5F6u0s9fY'
+const SESSION_KEY = 'mistyeyes_video_seen'
+
 export default function Home() {
+  const [showModal, setShowModal] = useState(false)
+
+  useEffect(() => {
+    if (sessionStorage.getItem(SESSION_KEY)) return
+    const timer = setTimeout(() => setShowModal(true), 4000)
+    return () => clearTimeout(timer)
+  }, [])
+
+  function closeModal() {
+    setShowModal(false)
+    sessionStorage.setItem(SESSION_KEY, '1')
+  }
+
   return (
     <div>
+      {/* Video modal — auto-opens after 4s, once per session */}
+      <AnimatePresence>
+        {showModal && (
+          <motion.div
+            key="video-modal-backdrop"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
+            onClick={closeModal}
+          >
+            <motion.div
+              key="video-modal-panel"
+              initial={{ opacity: 0, scale: 0.92, y: 24 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.92, y: 24 }}
+              transition={{ type: 'spring', stiffness: 280, damping: 26 }}
+              className="relative bg-white rounded-2xl shadow-2xl w-full max-w-3xl overflow-hidden"
+              onClick={e => e.stopPropagation()}
+            >
+              {/* Close button */}
+              <button
+                onClick={closeModal}
+                className="absolute top-3 right-3 z-10 rounded-full bg-black/60 hover:bg-black/80 text-white p-1.5 transition-colors"
+                aria-label="Close video"
+              >
+                <X className="h-4 w-4" />
+              </button>
+
+              {/* Warning header */}
+              <div className="bg-orange-500 text-white text-center py-3 px-6">
+                <p className="font-bold text-sm tracking-wide uppercase">
+                  ⚠️ WARNING: This video may cause tail wags and unexpected generosity
+                </p>
+              </div>
+
+              {/* Text */}
+              <div className="px-8 pt-5 pb-4 text-center">
+                <p className="text-muted-foreground text-sm leading-relaxed mb-1">
+                  Our volunteers and animals recently starred in a joyful new video that captures the heart of Misty Eyes — compassion, second chances, wagging tails, and happy, hopeful futures!
+                </p>
+                <p className="font-bold text-sm">Check it out!</p>
+              </div>
+
+              {/* YouTube embed */}
+              <div className="relative w-full aspect-video bg-black">
+                <iframe
+                  src={`https://www.youtube.com/embed/${VIDEO_ID}?autoplay=1&rel=0`}
+                  title="Welcome to Misty Eyes Animal Center"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="absolute inset-0 w-full h-full"
+                />
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Hero */}
       <section className="relative min-h-[80vh] flex items-center justify-center text-white overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="/images/0064_Cat_20and_20Dog.jpg"
-            alt="A cat and dog together at Misty Eyes"
-            className="w-full h-full object-cover"
+            src="/images/misty_eyes_building.jpg"
+            alt="Misty Eyes Animal Center — Avon, Indiana"
+            className="w-full h-full object-cover object-center"
           />
-          <div className="absolute inset-0 bg-teal-900/70" />
+          <div className="absolute inset-0 bg-gradient-to-b from-teal-900/75 via-teal-900/60 to-teal-900/80" />
         </div>
         <div className="container relative z-10 text-center py-24">
-          <motion.p
-            variants={fadeUp} initial="hidden" animate="show" custom={0}
-            className="text-amber-300 font-semibold tracking-widest uppercase text-sm mb-4"
-          >
-            Avon, Indiana
-          </motion.p>
           <motion.h1
-            variants={fadeUp} initial="hidden" animate="show" custom={1}
-            className="font-heading text-5xl md:text-7xl font-bold mb-6 leading-tight"
+            variants={fadeUp} initial="hidden" animate="show" custom={0}
+            className="font-heading text-5xl md:text-7xl font-bold mb-3 leading-tight"
           >
-            Rescue. Love. Repeat.
+            Misty Eyes Animal Center
           </motion.h1>
+          <motion.p
+            variants={fadeUp} initial="hidden" animate="show" custom={1}
+            className="text-amber-300 font-bold tracking-widest uppercase text-sm mb-6"
+          >
+            Rescue. Love. Repeat. &nbsp;·&nbsp; Avon, Indiana
+          </motion.p>
           <motion.p
             variants={fadeUp} initial="hidden" animate="show" custom={2}
             className="text-xl md:text-2xl text-teal-100 mb-10 max-w-2xl mx-auto"
           >
-            Misty Eyes Animal Center is a nonprofit animal rescue dedicated to giving every animal a loving second chance.
+            A nonprofit animal rescue dedicated to giving every animal a loving second chance.
           </motion.p>
           <motion.div
             variants={fadeUp} initial="hidden" animate="show" custom={3}
@@ -80,6 +156,13 @@ export default function Home() {
               <Heart className="h-5 w-5" />
               Donate
             </Link>
+            <button
+              onClick={() => setShowModal(true)}
+              className="inline-flex items-center gap-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/40 transition-colors px-6 py-4 text-base font-semibold"
+            >
+              <PlayCircle className="h-5 w-5" />
+              Watch Our Story
+            </button>
           </motion.div>
         </div>
       </section>

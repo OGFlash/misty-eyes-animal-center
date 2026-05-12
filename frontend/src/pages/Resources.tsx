@@ -7,11 +7,11 @@ const CATEGORIES = [
   {
     title: 'For Pet Owners',
     links: [
-      { label: 'Low-Cost Spay/Neuter Programs', href: 'https://www.hsus.org', ext: true },
-      { label: 'Indiana Animal Control Directory', href: '#', ext: false },
-      { label: 'Lost & Found Resources', href: '/lost-and-found', ext: false },
-      { label: 'Pet Food Assistance Programs', href: '#', ext: false },
-      { label: 'Dog Training Tips', href: '/dog-training', ext: false },
+      { label: 'Low-Cost Spay/Neuter Programs', href: 'https://www.hsus.org/animals/pets/spay_and_neuter/', ext: true },
+      { label: 'Indiana Animal Control Directory', href: 'https://www.in.gov/isdh/24932.htm', ext: true },
+      { label: 'Lost & Found Resources', href: '/lost-and-found-pets', ext: false },
+      { label: 'Pet Food Assistance Programs', href: 'https://www.petfoodstamps.org', ext: true },
+      { label: 'Dog Training Tips', href: '/dogtraining', ext: false },
     ],
   },
   {
@@ -20,7 +20,7 @@ const CATEGORIES = [
       { label: 'Report Animal Abuse', href: '/animal-abuse', ext: false },
       { label: 'Puppy Mills: What to Know', href: '/puppy-mills', ext: false },
       { label: 'ASPCA Animal Poison Control', href: 'https://www.aspca.org/pet-care/animal-poison-control', ext: true },
-      { label: 'Indiana State Animal Laws', href: '#', ext: false },
+      { label: 'Indiana State Animal Laws', href: 'https://codes.findlaw.com/in/title-15-agriculture-and-animals/in-code-sect-15-20-1-1.html', ext: true },
     ],
   },
   {

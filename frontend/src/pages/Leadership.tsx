@@ -1,6 +1,40 @@
+import { Link, useLocation } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Mail } from 'lucide-react'
 import PageHero from '@/components/ui/PageHero'
+import { cn } from '@/lib/utils'
+
+const ABOUT_TABS = [
+  { label: 'About Us',        href: '/about-us' },
+  { label: 'Leadership Team', href: '/leadership' },
+  { label: 'Contact Us',      href: '/contact-us' },
+]
+
+function AboutSubNav() {
+  const { pathname } = useLocation()
+  return (
+    <div className="border-b bg-white">
+      <div className="container">
+        <nav className="flex gap-1 overflow-x-auto">
+          {ABOUT_TABS.map(tab => (
+            <Link
+              key={tab.href}
+              to={tab.href}
+              className={cn(
+                'shrink-0 px-5 py-3.5 text-sm font-medium border-b-2 transition-colors',
+                pathname === tab.href
+                  ? 'border-primary text-primary'
+                  : 'border-transparent text-muted-foreground hover:text-foreground hover:border-border',
+              )}
+            >
+              {tab.label}
+            </Link>
+          ))}
+        </nav>
+      </div>
+    </div>
+  )
+}
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -28,8 +62,8 @@ const ANIMAL_OPS: Member[] = [
   { name: 'Sheila Springer', role: 'Adoption Counselor — Database Administrator',    photo: '/images/0076_SheilaSpringer.jpg' },
   { name: 'Anne Swearingen', role: 'Adoption Assistant',                             photo: '/images/0077_Anne_20Swearingen_edited.jpg' },
   { name: 'Ida Schnabel',    role: 'Adoption Assistant',                             photo: '/images/0079_IdaSchnabel.jpg' },
-  { name: 'Diane Sandusky',  role: 'Adoption Assistant' },
-  { name: 'Laura Pirino',    role: 'Adoption Assistant' },
+  { name: 'Diane Sandusky',  role: 'Adoption Assistant',                             photo: '/images/0078_Dog.jpg' },
+  { name: 'Laura Pirino',    role: 'Adoption Assistant',                             photo: '/images/0080_RTW-02929_edited_edited_edited_edited.jpg' },
 ]
 
 const FOSTER: Member[] = [
@@ -40,10 +74,10 @@ const FOSTER: Member[] = [
   { name: 'Debbie Draper',   role: 'Foster Family Support Team',      photo: '/images/0081_Debbie_20Draper_edited_edited_edited_edite.jpg' },
   { name: 'Vicki Stump',     role: 'Foster Family Support Team',      photo: '/images/0082_Vicki_20Stump.jpg' },
   { name: 'Brenda Lohsl',    role: 'Foster Family Support Team',      photo: '/images/0086_Brenda.jpg' },
-  { name: 'Laura Pirino',    role: 'Foster Family Support Team' },
-  { name: 'Coley Stadler',   role: 'Foster Family Support Team' },
-  { name: 'Mindy Elliott',   role: 'Foster Family Support Team' },
-  { name: 'Mark Berman',     role: 'Foster Family Support Team' },
+  { name: 'Laura Pirino',    role: 'Foster Family Support Team',      photo: '/images/0080_RTW-02929_edited_edited_edited_edited.jpg' },
+  { name: 'Coley Stadler',   role: 'Foster Family Support Team',      photo: '/images/0083_Grey_20Kitten.jpg' },
+  { name: 'Mindy Elliott',   role: 'Foster Family Support Team',      photo: '/images/0085_Cat_20Portrait_edited.png' },
+  { name: 'Mark Berman',     role: 'Foster Family Support Team',      photo: '/images/0084_Dog_20Portrait.jpg' },
 ]
 
 const OUTREACH: Member[] = [
@@ -55,7 +89,7 @@ const SUPPORT: Member[] = [
   { name: 'Terry Keeler',   role: 'Volunteer Program Coordinator',   photo: '/images/0091_TerryKeeler.jpg',  email: 'Terry@mistyeyes.org' },
   { name: 'Windy Tolliver', role: 'Grounds & Building Coordinator',  photo: '/images/0092_WindyTolliver.jpg' },
   { name: 'Ed Wrin',        role: 'Building Design & Maintenance',   photo: '/images/0089_EdWrin.jpg' },
-  { name: 'Tami Hoy',       role: 'Web Administrator' },
+  { name: 'Tami Hoy',       role: 'Web Administrator',               photo: '/images/0090_IMG_2516_edited.png' },
 ]
 
 const TEAMS: { heading: string; members: Member[] }[] = [
@@ -98,6 +132,7 @@ export default function Leadership() {
   return (
     <div>
       <PageHero badge="Our Team" title="Leadership Team" subtitle="Misty Eyes Animal Center is run entirely by dedicated volunteers. Meet the people who make our mission possible." />
+      <AboutSubNav />
 
       <section className="py-20 bg-white">
         <div className="container max-w-6xl">
@@ -124,7 +159,7 @@ export default function Leadership() {
             <p className="text-muted-foreground mb-6">Misty Eyes is always looking for passionate people to join our volunteer family. Every role matters — from fostering to fundraising.</p>
             <div className="flex justify-center gap-3 flex-wrap">
               <a href="/volunteer" className="inline-flex items-center gap-2 rounded-full bg-primary text-white px-6 py-2.5 text-sm font-semibold hover:bg-teal-700 transition-colors">Volunteer With Us</a>
-              <a href="/contact" className="inline-flex items-center gap-2 rounded-full border px-6 py-2.5 text-sm font-semibold hover:bg-secondary transition-colors">Contact Us</a>
+              <a href="/contact-us" className="inline-flex items-center gap-2 rounded-full border px-6 py-2.5 text-sm font-semibold hover:bg-secondary transition-colors">Contact Us</a>
             </div>
           </motion.div>
         </div>

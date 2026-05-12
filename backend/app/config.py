@@ -6,14 +6,14 @@ class Settings(BaseSettings):
 
     # SES
     ses_region: str = "us-east-1"
-    ses_from_email: str = "noreply@mistyeyes.org"
-    ses_org_email: str = "info@mistyeyes.org"
+    ses_from_email: str = "noreply@mistyeyesanimalcenter.com"
+    ses_org_email: str = "info@mistyeyesanimalcenter.com"
 
     # CORS
     allowed_origins: list[str] = [
-        "https://mistyeyes.org",
-        "https://www.mistyeyes.org",
-        "https://staging.mistyeyes.org",
+        "https://mistyeyesanimalcenter.com",
+        "https://www.mistyeyesanimalcenter.com",
+        "https://staging.mistyeyesanimalcenter.com",
         "http://localhost:3000",
     ]
 

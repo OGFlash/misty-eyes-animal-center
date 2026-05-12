@@ -1,49 +1,102 @@
 import { motion } from 'framer-motion'
-import { GraduationCap, Star, Users, Clock, ArrowRight } from 'lucide-react'
+import { ExternalLink, ArrowRight } from 'lucide-react'
 import PageHero from '@/components/ui/PageHero'
 
-const BENEFITS = [
-  { icon: Clock, title: 'Community Service Hours', desc: 'Earn community service hours that count toward graduation requirements and college applications.' },
-  { icon: Star, title: 'Real-World Experience', desc: 'Gain hands-on experience in nonprofit management, marketing, events, and animal care operations.' },
-  { icon: Users, title: 'Leadership Development', desc: 'Take ownership of projects, lead teams, and develop skills that matter beyond the classroom.' },
-  { icon: GraduationCap, title: 'College Resume Builder', desc: 'Stand out with meaningful, sustained service work that shows long-term commitment and initiative.' },
+const RESOURCES = [
+  {
+    title: 'Safety Around Pets',
+    grade: 'Grades K-2',
+    credit: 'student Kate L.',
+    href: 'https://www.canva.com/design/DAEnIE9E52Y/wFwiyogj90tKtBrTVrJ-kA/view?utm_content=DAEnIE9E52Y&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton',
+    type: 'Canva Presentation',
+  },
+  {
+    title: 'A Lifetime Commitment',
+    grade: 'Grades K-2',
+    credit: 'student Kate L.',
+    href: 'https://www.canva.com/design/DAElaH2J8y0/USLKkkpJGLYoc_bBCmPThg/view?utm_content=DAElaH2J8y0&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink',
+    type: 'Canva Presentation',
+  },
+  {
+    title: 'Adopting vs. Buying Your Next Pet',
+    grade: 'All Ages',
+    credit: 'students Layla & Olivia',
+    href: 'https://youtu.be/7cEsuB5HWhQ',
+    type: 'YouTube Video',
+  },
 ]
 
 export default function ForStudentsByStudents() {
   return (
     <div>
-      <PageHero badge="Student Program" title="For Students, By Students" subtitle="A student-led program empowering young people to lead real projects with real impact at Misty Eyes Animal Center." />
+      <PageHero
+        badge="Student Program"
+        title="For Students, By Students"
+        subtitle="Student-created resources promoting responsible pet ownership and kindness toward all living things — free to use and share!"
+      />
 
-      <section className="py-20 bg-white">
-        <div className="container max-w-5xl">
-          <div className="grid md:grid-cols-2 gap-14 items-center mb-16">
-            <motion.div initial={{ opacity: 0, x: -16 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-              <h2 className="font-heading text-3xl font-bold mb-5">Student-Led. Real Impact.</h2>
-              <p className="text-muted-foreground leading-relaxed mb-4">For Students, By Students is a program designed for teens and young adults who want to make a tangible difference in their community while developing valuable life and career skills.</p>
-              <p className="text-muted-foreground leading-relaxed mb-4">Students take ownership of projects ranging from social media campaigns and event coordination to community outreach and fundraising. This isn\'t busywork — it\'s real responsibility with real outcomes.</p>
-              <p className="text-muted-foreground leading-relaxed">The program is coordinated by JV Kasprowicz, our Programs & Education Director. Students can participate individually or bring their school club or service organization.</p>
-            </motion.div>
-            <motion.div initial={{ opacity: 0, x: 16 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-              <div className="grid grid-cols-2 gap-4">
-                {BENEFITS.map(b => (
-                  <div key={b.title} className="bg-purple-50 rounded-2xl border border-purple-100 p-5">
-                    <b.icon className="h-5 w-5 text-purple-600 mb-3" />
-                    <p className="font-semibold text-sm mb-1">{b.title}</p>
-                    <p className="text-xs text-muted-foreground">{b.desc}</p>
+      {/* ── Intro ── */}
+      <section className="py-16 bg-white">
+        <div className="container max-w-2xl text-center">
+          <motion.div initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="space-y-4 text-sm text-muted-foreground leading-relaxed">
+            <p>
+              The team at Misty Eyes understands the importance of education. This program allows students to be creative while helping us promote responsible pet ownership and kindness toward all living things.
+            </p>
+            <p className="font-medium text-foreground">
+              This content is free to use and we encourage you to share it!
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── Resource cards ── */}
+      <section className="pb-20 bg-white">
+        <div className="container max-w-3xl">
+          <div className="grid gap-4">
+            {RESOURCES.map((r, i) => (
+              <motion.a
+                key={r.title}
+                href={r.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08 }}
+                className="group flex items-center justify-between gap-4 bg-purple-50 border border-purple-100 hover:border-purple-300 hover:shadow-md rounded-2xl p-6 transition-all"
+              >
+                <div>
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-xs font-semibold bg-purple-200 text-purple-800 rounded-full px-2.5 py-0.5">{r.grade}</span>
+                    <span className="text-xs text-muted-foreground">{r.type}</span>
                   </div>
-                ))}
-              </div>
-            </motion.div>
+                  <h3 className="font-heading font-bold text-base mb-1">{r.title}</h3>
+                  <p className="text-xs text-muted-foreground">Created by {r.credit}</p>
+                </div>
+                <ExternalLink className="h-5 w-5 text-purple-400 group-hover:text-purple-700 shrink-0 transition-colors" />
+              </motion.a>
+            ))}
           </div>
+        </div>
+      </section>
 
-          <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bg-gradient-to-br from-purple-600 to-purple-800 rounded-2xl p-10 text-white text-center">
-            <h3 className="font-heading text-2xl font-bold mb-3">Ready to Get Involved?</h3>
-            <p className="text-purple-100 mb-6">Students in middle school through college are welcome. Contact JV to learn how to get started.</p>
+      {/* ── Submit content CTA ── */}
+      <section className="py-14 bg-gradient-to-br from-purple-600 to-purple-800">
+        <div className="container max-w-xl text-center text-white">
+          <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+            <h3 className="font-heading text-2xl font-bold mb-3">Want to Add Your Content?</h3>
+            <p className="text-purple-100 text-sm mb-2">
+              If you are interested in adding content to this page, please email{' '}
+              <a href="mailto:JV@mistyeyes.org" className="font-bold underline hover:text-white">JV@mistyeyes.org</a>.
+            </p>
+            <p className="text-purple-200 text-xs mb-6">
+              Please note: Parental approval is required prior to any content submission.
+            </p>
             <div className="flex justify-center gap-4 flex-wrap">
-              <a href="mailto:JV@MistyEyes.org" className="inline-flex items-center gap-2 rounded-full bg-white text-purple-800 px-6 py-2.5 text-sm font-semibold hover:bg-purple-50 transition-colors">
+              <a href="mailto:JV@mistyeyes.org" className="inline-flex items-center gap-2 rounded-full bg-white text-purple-800 px-6 py-2.5 text-sm font-semibold hover:bg-purple-50 transition-colors">
                 Email JV@MistyEyes.org
               </a>
-              <a href="/contact" className="inline-flex items-center gap-2 rounded-full bg-white/20 hover:bg-white/30 px-6 py-2.5 text-sm font-semibold transition-colors">
+              <a href="/contact-us" className="inline-flex items-center gap-2 rounded-full bg-white/20 hover:bg-white/30 px-6 py-2.5 text-sm font-semibold transition-colors">
                 Contact Us <ArrowRight className="h-4 w-4" />
               </a>
             </div>

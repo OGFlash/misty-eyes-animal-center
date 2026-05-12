@@ -1,10 +1,11 @@
-import { useState } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { Menu, X, ChevronDown, Heart, PawPrint } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { cn } from '@/lib/utils'
 
 const NAV_LINKS = [
+  { label: 'Home',   href: '/' },
   { label: 'Adopt', href: '/adoptablepets' },
   {
     label: 'Help Us',
@@ -33,7 +34,14 @@ const NAV_LINKS = [
     ],
   },
   { label: 'Events',    href: '/events' },
-  { label: 'About',     href: '/about-us' },
+  {
+    label: 'About',
+    children: [
+      { label: 'About Us',        href: '/about-us' },
+      { label: 'Leadership Team', href: '/leadership' },
+      { label: 'Contact Us',      href: '/contact-us' },
+    ],
+  },
   {
     label: 'Resources',
     children: [
@@ -127,17 +135,39 @@ function NavItem({ item }: { item: NavItem }) {
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
+  const location = useLocation()
+  const navigate = useNavigate()
+
+  // Close mobile menu on any route change
+  useEffect(() => {
+    setMobileOpen(false)
+  }, [location.pathname])
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [mobileOpen])
+
+  function goTo(href: string) {
+    setMobileOpen(false)
+    navigate(href)
+  }
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80">
       <div className="container flex h-16 items-center justify-between">
-        {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 shrink-0" aria-label="Misty Eyes Animal Center — Home">
+        {/* Logo + Name */}
+        <Link to="/" className="flex items-center gap-4 shrink-0" aria-label="Misty Eyes Animal Center — Home">
           <img
             src="/images/0001_mistylogotransparent.png"
             alt="Misty Eyes Animal Center"
             className="h-10 w-auto"
           />
+          <div className="hidden sm:block leading-tight">
+            <p className="text-base font-bold text-primary leading-none">Misty Eyes</p>
+            <p className="text-sm text-primary/70 leading-none mt-0.5">Animal Center</p>
+          </div>
         </Link>
 
         {/* Desktop nav */}
@@ -177,74 +207,58 @@ export default function Navbar() {
       </div>
 
       {/* Mobile drawer */}
-      <AnimatePresence>
-        {mobileOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="lg:hidden overflow-hidden border-t bg-white"
-          >
-            <nav className="container py-4 flex flex-col gap-1" aria-label="Mobile navigation">
-              {NAV_LINKS.map((item) =>
-                item.href ? (
-                  <NavLink
-                    key={item.label}
-                    to={item.href}
-                    onClick={() => setMobileOpen(false)}
-                    className={({ isActive }) =>
-                      cn(
-                        'rounded-md px-3 py-2 text-sm font-medium text-foreground hover:bg-secondary',
-                        isActive && 'text-primary bg-secondary',
-                      )
-                    }
-                  >
+      {mobileOpen && (
+        <div className="lg:hidden overflow-y-auto border-t bg-white" style={{ maxHeight: 'calc(100dvh - 4rem)' }}>
+          <nav className="container py-4 flex flex-col gap-1" aria-label="Mobile navigation">
+            {NAV_LINKS.map((item) =>
+              item.href ? (
+                <button
+                  key={item.label}
+                  onClick={() => goTo(item.href!)}
+                  className={cn(
+                    'text-left rounded-md px-3 py-2 text-sm font-medium text-foreground hover:bg-secondary',
+                    location.pathname === item.href && 'text-primary bg-secondary',
+                  )}
+                >
+                  {item.label}
+                </button>
+              ) : (
+                <div key={item.label} className="pt-2">
+                  <p className="px-3 pb-1 text-xs font-semibold uppercase text-muted-foreground tracking-wider">
                     {item.label}
-                  </NavLink>
-                ) : (
-                  <div key={item.label} className="pt-2">
-                    <p className="px-3 pb-1 text-xs font-semibold uppercase text-muted-foreground tracking-wider">
-                      {item.label}
-                    </p>
-                    {item.children?.map((child) => (
-                      <NavLink
-                        key={child.href}
-                        to={child.href}
-                        onClick={() => setMobileOpen(false)}
-                        className={({ isActive }) =>
-                          cn(
-                            'block rounded-md px-3 py-2 text-sm text-foreground hover:bg-secondary',
-                            isActive && 'text-primary bg-secondary',
-                          )
-                        }
-                      >
-                        {child.label}
-                      </NavLink>
-                    ))}
-                  </div>
-                )
-              )}
-              <div className="flex gap-2 mt-3 px-3">
-                <Link
-                  to="/adoptablepets"
-                  onClick={() => setMobileOpen(false)}
-                  className="flex-1 text-center rounded-full bg-primary py-2 text-sm font-semibold text-white"
-                >
-                  Adopt
-                </Link>
-                <Link
-                  to="/donate"
-                  onClick={() => setMobileOpen(false)}
-                  className="flex-1 text-center rounded-full bg-amber-500 py-2 text-sm font-semibold text-white"
-                >
-                  Donate
-                </Link>
-              </div>
-            </nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
+                  </p>
+                  {item.children?.map((child) => (
+                    <button
+                      key={child.href}
+                      onClick={() => goTo(child.href)}
+                      className={cn(
+                        'w-full text-left rounded-md px-3 py-2 text-sm text-foreground hover:bg-secondary',
+                        location.pathname === child.href && 'text-primary bg-secondary',
+                      )}
+                    >
+                      {child.label}
+                    </button>
+                  ))}
+                </div>
+              )
+            )}
+            <div className="flex gap-2 mt-3 px-3 pb-6">
+              <button
+                onClick={() => goTo('/adoptablepets')}
+                className="flex-1 text-center rounded-full bg-primary py-2 text-sm font-semibold text-white"
+              >
+                Adopt
+              </button>
+              <button
+                onClick={() => goTo('/donate')}
+                className="flex-1 text-center rounded-full bg-amber-500 py-2 text-sm font-semibold text-white"
+              >
+                Donate
+              </button>
+            </div>
+          </nav>
+        </div>
+      )}
     </header>
   )
 }

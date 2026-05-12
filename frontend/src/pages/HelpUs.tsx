@@ -9,12 +9,12 @@ const fadeUp = {
 }
 
 const WAYS = [
-  { img: '/images/0033_4b9f5a_231b1ded77b04cb792ca59a602e34e1e_mv2.jpg', title: 'Volunteer', desc: 'Donate your time and skills. From welcome desk to events team, there\'s a role for everyone. No experience required — just a heart for animals.', href: '/volunteer', cta: 'Volunteer With Us' },
-  { img: '/images/0034_c51cc4_56099d895c6d4187903eeb325cba52cc_mv2.png', title: 'Foster A Pet', desc: 'Misty Eyes is foster-based. Opening your home is one of the most impactful things you can do. Fosters provide the love; we provide food, supplies, and vet care.', href: '/foster-1', cta: 'Become a Foster' },
-  { img: '/images/0035_11062b_f1f9edbeea9a42bca61fc28dff207f85_mv2.jpg', title: 'Every Day Ways', desc: 'Shop through Chewy and earn a $20 donation. Enroll in Kroger Community Rewards. Passive giving that adds up over time.', href: '/shop', cta: 'Shop & Give' },
-  { img: '/images/0036_7fa6da7a44d5498d8b66f74b6d2a076b.jpg', title: 'Donate', desc: 'Your financial gift directly supports the animals in our care. Every dollar saves lives. We are a 501(c)(3) nonprofit — your donation is tax-deductible.', href: '/donate', cta: 'Donate Now' },
-  { img: '/images/0037_a252d9f6d9d4112a37893b5369349f72.jpg', title: 'Wish List', desc: 'Browse our wish lists on Amazon and Chewy to send supplies directly to Misty Eyes. Every item purchased makes a difference.', href: '/wishlist', cta: 'Shop Wish Lists' },
-  { img: '/images/0038_11062b_841a038a35fe4e4da9c2871f63caed93_mv2.jpg', title: 'Host a Fundraiser', desc: 'Organize a community fundraiser or third-party event to benefit Misty Eyes. We\'ll support your efforts every step of the way.', href: '/host-a-fundraiser', cta: 'Get Started' },
+  { img: '/images/0033_volunteer_hires.jpg', title: 'Volunteer', desc: 'Donate your time and skills. From welcome desk to events team, there\'s a role for everyone. No experience required — just a heart for animals.', href: '/volunteer', cta: 'Volunteer With Us' },
+  { img: '/images/0034_foster_hires.png', title: 'Foster A Pet', desc: 'Misty Eyes is foster-based. Opening your home is one of the most impactful things you can do. Fosters provide the love; we provide food, supplies, and vet care.', href: '/foster-1', cta: 'Become a Foster' },
+  { img: '/images/0035_everydayways_hires.jpg', title: 'Every Day Ways', desc: 'Shop through Chewy and earn a $20 donation. Enroll in Kroger Community Rewards. Passive giving that adds up over time.', href: '/shop', cta: 'Shop & Give' },
+  { img: '/images/0036_donate_hires.jpg', title: 'Donate', desc: 'Your financial gift directly supports the animals in our care. Every dollar saves lives. We are a 501(c)(3) nonprofit — your donation is tax-deductible.', href: '/donate', cta: 'Donate Now' },
+  { img: '/images/0037_wishlist_hires.jpg', title: 'Wish List', desc: 'Browse our wish lists on Amazon and Chewy to send supplies directly to Misty Eyes. Every item purchased makes a difference.', href: '/wishlist', cta: 'Shop Wish Lists' },
+  { img: '/images/0038_fundraiser_hires.jpg', title: 'Host a Fundraiser', desc: 'Organize a community fundraiser or third-party event to benefit Misty Eyes. We\'ll support your efforts every step of the way.', href: '/host-a-fundraiser', cta: 'Get Started' },
 ]
 
 export default function HelpUs() {

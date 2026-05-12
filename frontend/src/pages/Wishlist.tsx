@@ -8,9 +8,9 @@ const fadeUp = {
 }
 
 const CATEGORIES = [
-  { title: 'For Cats & Kittens', items: ['Kitten milk replacer (KMR)', 'Baby bottles & nipples', 'Cat litter (unscented)', 'Soft cat beds', 'Interactive cat toys', 'Stainless steel bowls', 'Cat carriers', 'Feliway spray / diffusers'] },
-  { title: 'For Dogs & Puppies', items: ['Puppy food (dry & wet)', 'Dog beds & crate pads', 'Collars, leashes, harnesses', 'Kong toys & chews', 'Poop bags', 'Dog crates (all sizes)', 'Enzymatic cleaner', 'Treats (low-calorie)'] },
-  { title: 'For the Center', items: ['Paper towels & cleaning supplies', 'Laundry detergent (fragrance-free)', 'Bleach', 'Ziplock bags (all sizes)', 'Gift cards (Walmart, Amazon, Chewy)', 'Postage stamps', 'Printer paper & ink', 'Volunteer snacks & refreshments'] },
+  { title: 'For Cats & Kittens', items: ['Dry Kitten Food — Iams, Science Diet, Purina One, Pro Plan', 'Canned Kitten Food — Any Variety', 'Dry Adult Cat Food — Purina One, Iams, Science Diet, Pro Plan', 'Jars of Chicken Baby Food', 'Kitten Formula (dry powder)', 'Nutri-Cal Kitten Supplement'] },
+  { title: 'For Dogs & Puppies', items: ['Canned Senior Dog Food — Science Diet, Eukanuba, Pro Plan', 'Durable Chew Toys — Busy Bones, Bully Sticks, Nylabones, Kong Toys, Antlers', 'Spray Cheese & Peanut Butter for Kong Toys', 'Training Treats', 'Martingale Collars'] },
+  { title: 'Everyday Items for the Center', items: ['Trash Bags', 'Paper Towels', 'OdoBan Cleaner', 'White Copy Paper', '2-Pocket Folders', 'Stamps', 'Bath Tissue (septic safe)', 'Laundry Detergent', 'Sandwich Bags'] },
 ]
 
 export default function Wishlist() {
@@ -26,7 +26,7 @@ export default function Wishlist() {
             <p className="text-muted-foreground">Order directly from Amazon or Chewy and have items shipped straight to us.</p>
           </motion.div>
           <div className="flex flex-col sm:flex-row justify-center gap-5">
-            <motion.a variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} custom={0} href="https://www.amazon.com" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-4 bg-orange-50 border border-orange-200 rounded-2xl px-8 py-6 hover:shadow-md transition-shadow">
+            <motion.a variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} custom={0} href="https://www.amazon.com/hz/wishlist/ls/MISTYEYES" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-4 bg-orange-50 border border-orange-200 rounded-2xl px-8 py-6 hover:shadow-md transition-shadow">
               <ShoppingBag className="h-7 w-7 text-orange-500" />
               <div>
                 <p className="font-heading font-bold text-lg">Amazon Wish List</p>
@@ -34,11 +34,11 @@ export default function Wishlist() {
               </div>
               <ArrowRight className="h-5 w-5 text-orange-400 ml-4 group-hover:translate-x-1 transition-transform" />
             </motion.a>
-            <motion.a variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} custom={1} href="https://www.chewy.com" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-4 bg-blue-50 border border-blue-200 rounded-2xl px-8 py-6 hover:shadow-md transition-shadow">
+            <motion.a variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} custom={1} href="https://www.chewy.com/g/misty-eyes-animal-center_cl78049" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-4 bg-blue-50 border border-blue-200 rounded-2xl px-8 py-6 hover:shadow-md transition-shadow">
               <ShoppingBag className="h-7 w-7 text-blue-500" />
               <div>
                 <p className="font-heading font-bold text-lg">Chewy Wish List</p>
-                <p className="text-sm text-muted-foreground">Pet supplies shipped for free</p>
+                <p className="text-sm text-muted-foreground">Go to GIVE BACK → Donate to a Rescue → search Misty Eyes</p>
               </div>
               <ArrowRight className="h-5 w-5 text-blue-400 ml-4 group-hover:translate-x-1 transition-transform" />
             </motion.a>

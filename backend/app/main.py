@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from mangum import Mangum
 
 from app.config import settings
-from app.routers import contact, adopt, volunteer, foster, surrender, newsletter, fundraiser
+from app.routers import contact, adopt, volunteer, foster, surrender, newsletter, fundraiser, pets
 
 app = FastAPI(
     title="Misty Eyes Animal Center API",
@@ -29,6 +29,7 @@ app.include_router(foster.router,     prefix="/api")
 app.include_router(surrender.router,  prefix="/api")
 app.include_router(newsletter.router, prefix="/api")
 app.include_router(fundraiser.router, prefix="/api")
+app.include_router(pets.router,       prefix="/api")
 
 
 @app.get("/api/health")

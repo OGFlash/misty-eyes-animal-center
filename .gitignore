@@ -41,6 +41,11 @@ cdk.out/
 # OS
 .DS_Store
 Thumbs.db
+*.Zone.Identifier
+*:Zone.Identifier
+
+# Lambda build artifacts
+backend/package/
 
 # Logs
 *.log

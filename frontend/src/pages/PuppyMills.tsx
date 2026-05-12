@@ -40,7 +40,7 @@ export default function PuppyMills() {
           </div>
 
           <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bg-teal-50 border border-teal-200 rounded-2xl p-8 text-center">
-            <h3 className="font-heading text-xl font-bold mb-3">Adopt, Don\'t Shop</h3>
+            <h3 className="font-heading text-xl font-bold mb-3">Adopt, Don't Shop</h3>
             <p className="text-muted-foreground text-sm mb-5">Thousands of animals in rescues and shelters need homes. Choosing to adopt from a reputable rescue like Misty Eyes means you\'re giving a second chance to an animal that truly needs it — and you\'re not funding the cycle of cruelty.</p>
             <a href="/adoptable-pets" className="inline-flex items-center gap-2 rounded-full bg-primary text-white px-6 py-2.5 text-sm font-semibold hover:bg-teal-700 transition-colors">
               Meet Our Adoptable Pets <ArrowRight className="h-4 w-4" />

@@ -141,6 +141,38 @@ export default function ContactUs() {
           </div>
         </div>
       </section>
+
+      {/* Google Maps */}
+      <section className="bg-secondary/50 py-16">
+        <div className="container">
+          <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+            <h2 className="font-heading text-2xl font-bold mb-2 text-center">Find Us</h2>
+            <p className="text-muted-foreground text-sm text-center mb-8">616 S. County Rd. 800 E., Avon, Indiana 46123</p>
+            <div className="rounded-2xl overflow-hidden shadow-md border">
+              <iframe
+                title="Misty Eyes Animal Center"
+                src="https://maps.google.com/maps?q=616+S.+County+Rd.+800+E.,+Avon,+IN+46123&z=15&output=embed"
+                width="100%"
+                height="420"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+            <div className="flex justify-center mt-6">
+              <a
+                href="https://maps.google.com/?q=616+S+County+Rd+800+E,+Avon,+IN+46123"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full bg-primary text-white px-6 py-2.5 text-sm font-semibold hover:bg-teal-700 transition-colors"
+              >
+                <MapPin className="h-4 w-4" /> Get Directions
+              </a>
+            </div>
+          </motion.div>
+        </div>
+      </section>
     </div>
   )
 }

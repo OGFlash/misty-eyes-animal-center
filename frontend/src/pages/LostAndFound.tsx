@@ -51,7 +51,7 @@ export default function LostAndFound() {
             <p className="text-muted-foreground text-sm mb-5">We\'ll post lost/found pets to our social media to reach as many people as possible.</p>
             <div className="flex justify-center gap-3 flex-wrap">
               <a href="tel:3178588022" className="inline-flex items-center gap-2 rounded-full bg-primary text-white px-5 py-2.5 text-sm font-semibold hover:bg-teal-700 transition-colors">317-858-8022</a>
-              <a href="/contact" className="inline-flex items-center gap-2 rounded-full border px-5 py-2.5 text-sm font-semibold hover:bg-white transition-colors">Contact Form <ArrowRight className="h-4 w-4" /></a>
+              <a href="/contact-us" className="inline-flex items-center gap-2 rounded-full border px-5 py-2.5 text-sm font-semibold hover:bg-white transition-colors">Contact Form <ArrowRight className="h-4 w-4" /></a>
             </div>
           </motion.div>
         </div>

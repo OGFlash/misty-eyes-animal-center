@@ -35,7 +35,7 @@ export default function SponsorASuite() {
           </div>
           <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center">
             <p className="text-muted-foreground mb-5">Ready to create a lasting tribute? We\'d love to help you find the right sponsorship.</p>
-            <a href="/contact" className="inline-flex items-center gap-2 rounded-full bg-primary text-white px-6 py-2.5 text-sm font-semibold hover:bg-teal-700 transition-colors">
+            <a href="/contact-us" className="inline-flex items-center gap-2 rounded-full bg-primary text-white px-6 py-2.5 text-sm font-semibold hover:bg-teal-700 transition-colors">
               Inquire About Sponsorship <ArrowRight className="h-4 w-4" />
             </a>
           </motion.div>

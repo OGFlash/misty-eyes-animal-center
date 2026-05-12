@@ -94,7 +94,7 @@ export default function OwnerSurrender() {
                   <p className="text-xs text-muted-foreground">Adoption@MistyEyes.org</p>
                 </div>
               </a>
-              <a href="/contact" className="flex items-center gap-3 bg-teal-50 rounded-xl px-6 py-4 hover:bg-teal-100 transition-colors">
+              <a href="/contact-us" className="flex items-center gap-3 bg-teal-50 rounded-xl px-6 py-4 hover:bg-teal-100 transition-colors">
                 <ArrowRight className="h-5 w-5 text-primary" />
                 <div className="text-left">
                   <p className="font-semibold text-sm">Contact Form</p>

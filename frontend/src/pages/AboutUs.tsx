@@ -1,7 +1,40 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Heart, Shield, Users, Target, ArrowRight, CheckCircle2 } from 'lucide-react'
 import PageHero from '@/components/ui/PageHero'
+import { cn } from '@/lib/utils'
+
+const ABOUT_TABS = [
+  { label: 'About Us',        href: '/about-us' },
+  { label: 'Leadership Team', href: '/leadership' },
+  { label: 'Contact Us',      href: '/contact-us' },
+]
+
+function AboutSubNav() {
+  const { pathname } = useLocation()
+  return (
+    <div className="border-b bg-white">
+      <div className="container">
+        <nav className="flex gap-1 overflow-x-auto">
+          {ABOUT_TABS.map(tab => (
+            <Link
+              key={tab.href}
+              to={tab.href}
+              className={cn(
+                'shrink-0 px-5 py-3.5 text-sm font-medium border-b-2 transition-colors',
+                pathname === tab.href
+                  ? 'border-primary text-primary'
+                  : 'border-transparent text-muted-foreground hover:text-foreground hover:border-border',
+              )}
+            >
+              {tab.label}
+            </Link>
+          ))}
+        </nav>
+      </div>
+    </div>
+  )
+}
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -28,6 +61,7 @@ export default function AboutUs() {
   return (
     <div>
       <PageHero badge="Our Story" title="About Misty Eyes Animal Center" subtitle="A 100% volunteer-run nonprofit dedicated to ending the needless euthanasia of pets throughout Indiana, one rescue at a time." />
+      <AboutSubNav />
 
       <section className="py-20 bg-white">
         <div className="container">

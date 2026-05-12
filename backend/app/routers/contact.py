@@ -22,7 +22,7 @@ async def submit_contact_form(data: ContactRequest):
     html_confirm = f"""
     <h2>Thanks for reaching out, {data.name}!</h2>
     <p>We received your message and will get back to you as soon as possible.</p>
-    <p>In the meantime, check out our <a href="https://mistyeyes.org/adoptablepets">adoptable pets</a>!</p>
+    <p>In the meantime, check out our <a href="https://www.mistyeyesanimalcenter.com/adoptablepets">adoptable pets</a>!</p>
     <br/><p>— The Misty Eyes Animal Center Team</p>
     """
 

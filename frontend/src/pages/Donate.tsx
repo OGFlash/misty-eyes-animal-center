@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Heart, Shield, ArrowRight, CheckCircle2 } from 'lucide-react'
+import { Heart, Shield, ArrowRight, CheckCircle2, FileDown } from 'lucide-react'
 import PageHero from '@/components/ui/PageHero'
 
 const fadeUp = {
@@ -7,7 +7,6 @@ const fadeUp = {
   show: (i = 0) => ({ opacity: 1, y: 0, transition: { delay: i * 0.08, duration: 0.5 } }),
 }
 
-const AMOUNTS = [25, 50, 100, 250, 500]
 const IMPACT = [
   { amount: '$25', desc: 'Covers routine vaccinations for one pet' },
   { amount: '$50', desc: 'Provides spay/neuter for one animal' },
@@ -15,11 +14,35 @@ const IMPACT = [
   { amount: '$250', desc: 'Supports a foster family for a month' },
   { amount: '$500', desc: 'Underwrites an adoption event' },
 ]
+
+const DONATE_OPTIONS = [
+  {
+    title: 'Make a One-Time Donation',
+    desc: 'A single gift that goes directly to the animals in our care.',
+    href: 'https://interland3.donorperfect.net/weblink/weblink.aspx?name=E231966&id=2',
+    color: 'bg-teal-600 hover:bg-teal-700',
+  },
+  {
+    title: 'Make a Monthly Donation',
+    desc: 'Become a sustaining donor and provide reliable support month after month.',
+    href: 'https://interland3.donorperfect.net/weblink/WebLink.aspx?name=E231966&id=73',
+    color: 'bg-amber-500 hover:bg-amber-600',
+  },
+  {
+    title: 'Make a Tribute or Memorial Donation',
+    desc: 'Honor a person or pet with a heartfelt donation in their name.',
+    href: 'https://interland3.donorperfect.net/weblink/weblink.aspx?name=E231966&id=2',
+    color: 'bg-rose-500 hover:bg-rose-600',
+  },
+]
+
 const OTHER_WAYS = [
-  { title: 'Giving Cards', href: '/giving-cards', desc: 'Give the gift of saving lives. Misty Eyes gift cards make meaningful presents.' },
-  { title: 'Corporate Giving', href: '/corporate-giving', desc: 'Partner with us through matching gifts, sponsorships, or workplace campaigns.' },
-  { title: 'Sponsor a Suite', href: '/sponsor-a-suite', desc: 'Name a kennel suite in honor of a beloved pet or person.' },
-  { title: 'Naming Opportunities', href: '/naming-opportunities', desc: 'Leave a lasting legacy by naming a room or facility in the Adoption Center.' },
+  { title: 'Giving Cards', href: '/givingcards', desc: 'Give the perfect gift for any pet lover — a Misty Eyes Giving Card supports animals in their honor.' },
+  { title: 'Corporate Giving', href: '/copy-of-sponsor-a-suite', desc: 'Partner with us through matching gifts, event sponsorships, or workplace campaigns.' },
+  { title: 'Sponsor a Suite', href: '/copy-of-naiming-opportunities', desc: 'Sponsor one of our Kitty City suites — your company name displayed prominently on-site.' },
+  { title: 'Naming Opportunities', href: '/namingopportunities', desc: 'Leave a lasting legacy by naming a room or space in the Adoption Center.' },
+  { title: 'Donate from Wish List', href: '/wishlist', desc: 'Send supplies directly via our Amazon or Chewy wish lists, or drop items off at the center.' },
+  { title: 'Donate Professional Services', href: '/copy-of-donate-1', desc: 'Volunteer your professional skills — we need electricians, designers, vets, writers, and more.' },
 ]
 
 export default function Donate() {
@@ -28,16 +51,16 @@ export default function Donate() {
       <PageHero badge="Support Our Mission" title="Donate" subtitle="Misty Eyes Animal Center is a 501(c)(3) nonprofit organization. Your tax-deductible donation directly funds the care of homeless animals.">
         <div className="flex items-center gap-3 text-sm text-teal-100">
           <Shield className="h-4 w-4" />
-          <span>EIN: Available upon request &bull; 100% volunteer-run</span>
+          <span>100% volunteer-run &bull; Every dollar goes to the animals</span>
         </div>
       </PageHero>
 
-      {/* Donate widget */}
+      {/* Donation options */}
       <section className="py-20 bg-white">
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             <motion.div initial={{ opacity: 0, x: -16 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-              <h2 className="font-heading text-3xl font-bold mb-4">Every Dollar Saves Lives</h2>
+              <h2 className="font-heading text-3xl font-bold mb-4">There are many ways to make a difference.</h2>
               <p className="text-muted-foreground leading-relaxed mb-8">Misty Eyes is entirely volunteer-run and donor-supported. Every penny donated goes directly to the animals — food, supplies, veterinary care, and finding forever homes.</p>
               <div className="space-y-3">
                 {IMPACT.map(item => (
@@ -49,25 +72,22 @@ export default function Donate() {
               </div>
             </motion.div>
 
-            <motion.div initial={{ opacity: 0, x: 16 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-              <div className="bg-secondary/50 rounded-2xl border p-8">
-                <h3 className="font-heading font-bold text-xl mb-6">Make a Donation</h3>
-                <div className="flex flex-wrap gap-2 mb-5">
-                  {AMOUNTS.map(a => (<button key={a} className="rounded-full border border-primary/30 hover:bg-primary hover:text-white hover:border-primary px-4 py-1.5 text-sm font-semibold transition-colors">${a}</button>))}
-                  <input type="number" placeholder="Custom" className="rounded-full border px-4 py-1.5 text-sm w-24 focus:outline-none focus:ring-2 focus:ring-primary/30" />
-                </div>
-                <div className="space-y-3 mb-5">
-                  <div><label className="text-sm font-medium mb-1 block">Frequency</label><div className="flex gap-2">
-                    <button className="flex-1 rounded-lg border bg-primary text-white text-sm py-2 font-medium">One-time</button>
-                    <button className="flex-1 rounded-lg border text-sm py-2 font-medium hover:bg-secondary transition-colors">Monthly</button>
-                  </div></div>
-                  <div><label className="text-sm font-medium mb-1 block">Email</label><input type="email" placeholder="your@email.com" className="w-full rounded-lg border px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/30" /></div>
-                </div>
-                <button className="w-full rounded-full bg-amber-500 hover:bg-amber-600 text-white font-semibold py-3 transition-colors flex items-center justify-center gap-2">
-                  <Heart className="h-4 w-4 fill-white" /> Donate Securely
-                </button>
-                <p className="text-xs text-muted-foreground text-center mt-3">Secured by SSL. Misty Eyes is a 501(c)(3) nonprofit (tax-deductible).</p>
-              </div>
+            <motion.div initial={{ opacity: 0, x: 16 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="space-y-4">
+              {DONATE_OPTIONS.map((opt) => (
+                <a
+                  key={opt.title}
+                  href={opt.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`flex items-center justify-between gap-4 rounded-2xl p-6 text-white transition-colors ${opt.color}`}
+                >
+                  <div>
+                    <p className="font-heading font-bold text-base mb-1">{opt.title}</p>
+                    <p className="text-sm opacity-90">{opt.desc}</p>
+                  </div>
+                  <Heart className="h-6 w-6 shrink-0 fill-white/30" />
+                </a>
+              ))}
             </motion.div>
           </div>
         </div>
@@ -79,7 +99,7 @@ export default function Donate() {
           <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
             <h2 className="font-heading text-3xl font-bold mb-3">More Ways to Give</h2>
           </motion.div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {OTHER_WAYS.map((item, i) => (
               <motion.a key={item.title} href={item.href} variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} custom={i} className="group bg-white rounded-2xl border p-6 hover:shadow-md transition-shadow block">
                 <h3 className="font-heading font-bold text-base mb-2 group-hover:text-primary transition-colors">{item.title}</h3>
@@ -88,6 +108,24 @@ export default function Donate() {
               </motion.a>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Donors Bill of Rights */}
+      <section className="py-12 bg-white border-t">
+        <div className="container text-center">
+          <motion.a
+            href="https://www.mistyeyes.org/_files/ugd/4b9f5a_bf5cd19feadd4f8c82a21ecc474b3be2.docx?dn=donors%20bill%20of%20rights.docx"
+            target="_blank"
+            rel="noopener noreferrer"
+            initial={{ opacity: 0, y: 8 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline"
+          >
+            <FileDown className="h-4 w-4" />
+            Download the Donors Bill of Rights
+          </motion.a>
         </div>
       </section>
     </div>

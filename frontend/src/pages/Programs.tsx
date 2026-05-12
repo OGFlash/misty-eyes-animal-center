@@ -9,10 +9,10 @@ const fadeUp = {
 }
 
 const PROGRAMS = [
-  { icon: GraduationCap, title: 'For Students, By Students', href: '/for-students-by-students', color: 'bg-purple-50 text-purple-600', desc: 'A student-led program that gives teens and young adults hands-on experience in animal rescue, nonprofit management, and community service. Earn community service hours while making a real difference.' },
-  { icon: BookOpen, title: 'Humane Education', href: '/humane-education', color: 'bg-teal-50 text-teal-600', desc: 'We bring humane education programs to classrooms, scout troops, and community groups. Lessons cover animal welfare, responsible pet ownership, and compassion for all living things.' },
-  { icon: Users, title: 'Community Outreach', href: '/community-outreach', color: 'bg-amber-50 text-amber-600', desc: 'Our outreach team works with local organizations and community members to expand our reach and impact. From pet food banks to community resource fairs.' },
-  { icon: Calendar, title: 'JV Kids Club', href: '/jv-kids-club', color: 'bg-rose-50 text-rose-600', desc: 'A fun, educational program for younger children that teaches kindness, empathy, and responsibility toward animals through age-appropriate activities and crafts.' },
+  { icon: GraduationCap, title: 'For Students, By Students', href: '/forstudentsbystudents', color: 'bg-purple-50 text-purple-600', desc: 'A student-led program that gives teens and young adults hands-on experience in animal rescue, nonprofit management, and community service. Earn community service hours while making a real difference.' },
+  { icon: BookOpen, title: 'Humane Education', href: '/humaneeducation', color: 'bg-teal-50 text-teal-600', desc: 'Free educational programs for Grades K-2, 3-5, 6-8, and Teens/Adults covering responsible pet ownership, careers with animals, and becoming an advocate. Available at our center or on-site at your school, business, or organization.' },
+  { icon: Users, title: 'Community Outreach', href: '/communityoutreach', color: 'bg-amber-50 text-amber-600', desc: 'Our outreach team sets up at community events, hosts dine-to-donate fundraisers, and collaborates on awareness projects. Join us on the 1st Wednesday of every month — in person or via Zoom!' },
+  { icon: Calendar, title: 'JV Kids Club', href: '/jv', color: 'bg-rose-50 text-rose-600', desc: 'A monthly program for Junior Volunteers in Grades 3-6. Includes fun, animal-related craft projects and activities that teach the basics of responsible pet ownership at the kids\' level.' },
 ]
 
 export default function Programs() {
@@ -44,7 +44,7 @@ export default function Programs() {
           <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <h2 className="font-heading text-2xl font-bold mb-3">Bring a Program to Your School or Group</h2>
             <p className="text-muted-foreground mb-6">Request a Misty Eyes program visit for your classroom, scout troop, birthday party, or community organization.</p>
-            <Link to="/contact" className="inline-flex items-center gap-2 rounded-full bg-primary text-white px-6 py-2.5 text-sm font-semibold hover:bg-teal-700 transition-colors">
+            <Link to="/contact-us" className="inline-flex items-center gap-2 rounded-full bg-primary text-white px-6 py-2.5 text-sm font-semibold hover:bg-teal-700 transition-colors">
               Request a Visit <ArrowRight className="h-4 w-4" />
             </Link>
           </motion.div>

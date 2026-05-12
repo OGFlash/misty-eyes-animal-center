@@ -1,41 +1,61 @@
 import { motion } from 'framer-motion'
-import { Megaphone, Heart, Users, ArrowRight } from 'lucide-react'
 import PageHero from '@/components/ui/PageHero'
 
 export default function CommunityOutreach() {
   return (
     <div>
-      <PageHero badge="Outreach" title="Community Outreach" subtitle="Misty Eyes extends its mission beyond adoption through meaningful partnerships and community programs across Central Indiana." />
+      <PageHero badge="Outreach" title="Community Outreach" subtitle="Bringing Misty Eyes right to your doorstep — fostering connections and making a positive impact in our local neighborhoods." />
 
-      <section className="py-20 bg-white">
-        <div className="container max-w-4xl">
-          <div className="rounded-2xl overflow-hidden shadow mb-12 max-h-80">
-            <img src="/images/0051_Community_20Outreach_202_edited.jpg" alt="Community Outreach" className="w-full h-full object-cover" />
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 mb-16">
-            {[
-              { icon: Users, title: 'Community Partnerships', desc: 'We work with local nonprofits, schools, businesses, and community organizations to expand our reach and create more opportunities to help animals and people.' },
-              { icon: Heart, title: 'Pet Resource Programs', desc: 'Connecting pet owners in need with food assistance, low-cost vet care, and community resources to help families keep their pets during difficult times.' },
-              { icon: Megaphone, title: 'Awareness Campaigns', desc: 'From tabling at community events to social media campaigns, our outreach team raises awareness about animal welfare, adoption, and responsible pet ownership.' },
-            ].map((item, i) => (
-              <motion.div key={item.title} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="text-center">
-                <div className="w-14 h-14 rounded-2xl bg-amber-50 flex items-center justify-center mx-auto mb-5">
-                  <item.icon className="h-6 w-6 text-amber-600" />
-                </div>
-                <h3 className="font-heading font-bold text-lg mb-3">{item.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-
-          <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bg-secondary rounded-2xl p-8 text-center">
-            <h3 className="font-heading text-xl font-bold mb-3">Get Involved in Outreach</h3>
-            <p className="text-muted-foreground mb-5 text-sm">Our community outreach team is always looking for volunteers and partner organizations. Reach out to Sheryl to learn more.</p>
-            <div className="flex justify-center gap-3 flex-wrap">
-              <a href="mailto:sheryl@mistyeyes.org" className="inline-flex items-center gap-2 rounded-full bg-primary text-white px-6 py-2.5 text-sm font-semibold hover:bg-teal-700 transition-colors">Email sheryl@mistyeyes.org</a>
-              <a href="/volunteer" className="inline-flex items-center gap-2 rounded-full border px-6 py-2.5 text-sm font-semibold hover:bg-white transition-colors">Volunteer <ArrowRight className="h-4 w-4" /></a>
+      {/* ── Intro ── */}
+      <section className="py-16 bg-amber-400">
+        <div className="container max-w-3xl text-center">
+          <motion.div initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="space-y-5">
+            <div>
+              <p className="font-bold text-gray-900 mb-2">Welcome to the heart of Misty Eyes Animal Center's Community Outreach initiative!</p>
+              <p className="text-sm text-gray-900 leading-relaxed">
+                Our dedicated team of volunteers is on a mission to bring Misty Eyes right to your doorstep, fostering connections and making a positive impact in our local neighborhoods.
+              </p>
             </div>
+            <div>
+              <p className="font-bold text-primary mb-2">At Misty Eyes, we believe in the power of community.</p>
+              <p className="text-sm text-gray-900 leading-relaxed">
+                Our Community Outreach team embodies this spirit by actively participating in various events throughout the year. Whether it's setting up engaging booths at community events, hosting delightful fundraisers like dine-to-donate events at popular restaurants, or collaborating on creative projects that raise funds while spreading awareness about the Misty Eyes mission,{' '}
+                <em className="font-semibold">we're all about making a difference together.</em>
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── Photos ── */}
+      <section className="py-12 bg-amber-400">
+        <div className="container max-w-3xl">
+          <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="grid grid-cols-2 gap-4">
+            <div className="rounded-xl overflow-hidden shadow-lg aspect-[4/3]">
+              <img src="/images/0041_outreach_tent.jpg" alt="Misty Eyes outreach tent at community event" className="w-full h-full object-cover" />
+            </div>
+            <div className="rounded-xl overflow-hidden shadow-lg aspect-[4/3]">
+              <img src="/images/0042_outreach_booth.jpg" alt="Misty Eyes outreach booth banner" className="w-full h-full object-cover" />
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── Join CTA ── */}
+      <section className="py-12 bg-amber-300">
+        <div className="container max-w-2xl">
+          <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bg-amber-200/70 rounded-2xl p-8 text-center text-sm text-gray-900 leading-relaxed space-y-3">
+            <p>
+              Please join us on the 1st Wednesday of every month - either in person at the Adoption Center or virtually via Zoom - as we brainstorm, plan, and execute initiatives that touch the lives of both our furry friends and the wonderful people who support us.
+            </p>
+            <p>
+              If you're passionate about making a positive impact and have ideas that can help us grow, we want you on our team! Please contact{' '}
+              <a href="mailto:outreach@mistyeyes.org" className="font-bold underline text-primary hover:text-teal-700">
+                outreach@mistyeyes.org
+              </a>{' '}
+              to join the committee and help build a stronger, more compassionate community for our beloved animals -{' '}
+              <em className="font-semibold">together.</em>
+            </p>
           </motion.div>
         </div>
       </section>

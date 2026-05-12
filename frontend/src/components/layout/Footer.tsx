@@ -1,5 +1,6 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { MapPin, Phone, Clock, Facebook, Instagram, Heart } from 'lucide-react'
+import { MapPin, Phone, Clock, Facebook, Instagram, Heart, Mail, CheckCircle } from 'lucide-react'
 
 const HOURS = [
   { day: 'Monday',    ac: 'Closed',           kc: 'Closed' },
@@ -25,12 +26,83 @@ const QUICK_LINKS = [
 
 export default function Footer() {
   const year = new Date().getFullYear()
+  const [email, setEmail] = useState('')
+  const [firstName, setFirstName] = useState('')
+  const [status, setStatus] = useState<'idle' | 'loading' | 'done' | 'error'>('idle')
+
+  async function handleSubscribe(e: React.FormEvent) {
+    e.preventDefault()
+    if (!email) return
+    setStatus('loading')
+    try {
+      const res = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, first_name: firstName }),
+      })
+      if (!res.ok) throw new Error()
+      setStatus('done')
+    } catch {
+      setStatus('error')
+    }
+  }
 
   return (
     <footer className="bg-teal-900 text-teal-50">
-      <div className="container py-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
 
-        {/* Brand */}
+      {/* ── Newsletter band ── */}
+      <div className="bg-teal-800 border-b border-teal-700">
+        <div className="container py-10 flex flex-col md:flex-row items-center md:items-start gap-8">
+          {/* Copy */}
+          <div className="flex-1 min-w-0">
+            <div className="flex items-center gap-2 mb-1">
+              <Mail className="h-5 w-5 text-amber-400" />
+              <h3 className="font-heading font-bold text-white text-lg">Stay in the Loop</h3>
+            </div>
+            <p className="text-sm text-teal-200">Get news about adoptable animals, upcoming events, and ways to help — delivered to your inbox.</p>
+          </div>
+
+          {/* Form */}
+          <div className="w-full md:w-auto md:min-w-[420px]">
+            {status === 'done' ? (
+              <div className="flex items-center gap-2 text-green-300 font-semibold text-sm py-3">
+                <CheckCircle className="h-5 w-5" />
+                You're on the list! Thanks for subscribing.
+              </div>
+            ) : (
+              <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-2">
+                <input
+                  type="text"
+                  placeholder="First name"
+                  value={firstName}
+                  onChange={e => setFirstName(e.target.value)}
+                  className="w-28 shrink-0 rounded-md bg-teal-700 border border-teal-600 text-white placeholder:text-teal-400 text-sm px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-400"
+                />
+                <input
+                  type="email"
+                  required
+                  placeholder="Email address"
+                  value={email}
+                  onChange={e => setEmail(e.target.value)}
+                  className="flex-1 min-w-0 rounded-md bg-teal-700 border border-teal-600 text-white placeholder:text-teal-400 text-sm px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-400"
+                />
+                <button
+                  type="submit"
+                  disabled={status === 'loading'}
+                  className="shrink-0 rounded-md bg-amber-400 hover:bg-amber-300 disabled:opacity-60 text-teal-900 font-semibold text-sm px-5 py-2 transition-colors"
+                >
+                  {status === 'loading' ? 'Signing up…' : 'Sign Up'}
+                </button>
+              </form>
+            )}
+            {status === 'error' && (
+              <p className="text-red-300 text-xs mt-1">Something went wrong. Please try again.</p>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <div className="container py-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
         <div className="flex flex-col gap-4">
           <Link to="/" className="flex items-center gap-2">
             <img

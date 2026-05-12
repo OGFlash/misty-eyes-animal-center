@@ -30,7 +30,7 @@ export default function DogTraining() {
           <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bg-teal-50 border border-teal-200 rounded-2xl p-8">
             <h3 className="font-heading text-xl font-bold mb-3">Training Resources & Referrals</h3>
             <p className="text-muted-foreground text-sm leading-relaxed mb-5">Misty Eyes supports positive reinforcement training. We can connect you with trusted trainers in the Central Indiana area. Adopters are also encouraged to use our training resources to help newly adopted pets adjust to their forever home.</p>
-            <a href="/contact" className="inline-flex items-center gap-2 rounded-full bg-primary text-white px-6 py-2.5 text-sm font-semibold hover:bg-teal-700 transition-colors">
+            <a href="/contact-us" className="inline-flex items-center gap-2 rounded-full bg-primary text-white px-6 py-2.5 text-sm font-semibold hover:bg-teal-700 transition-colors">
               Ask for a Referral <ArrowRight className="h-4 w-4" />
             </a>
           </motion.div>
